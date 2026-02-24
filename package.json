@@ -1,0 +1,25 @@
+{
+  "name": "basicbot",
+  "version": "1.0.0",
+  "description": "Just testing a discord bot's functionality",
+  "homepage": "https://github.com/Ash-Accented/discord-bot#readme",
+  "bugs": {
+    "url": "https://github.com/Ash-Accented/discord-bot/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ash-Accented/discord-bot.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.25.1",
+    "dotenv": "^17.3.1"
+  }
+}
