@@ -47,7 +47,8 @@ const client = new Client({
     GatewayIntentBits.Guilds, //Required for the bot to function in servers (guilds)
     GatewayIntentBits.GuildMessages, //Required to receive messages in the guild
     GatewayIntentBits.MessageContent, //Required to read the content of the messages
-    GatewayIntentBits.GuildMembers //enum member 
+    GatewayIntentBits.GuildMembers, //enum member
+    GatewayIntentBits.GuildVoiceStates    //To allow for the mp3 to play in the channel of choice 
   ],
   //Partial data is only ever guaranteed to contain an ID
   partials: [ //Partial Structures were introduced to the library in version 12 and are optionally received whenever there is insufficient data to emit the client event with a fully intact discord.js structure.
