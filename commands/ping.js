@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('discord.js');
 module.exports = {
-  data: new SlashCommandBuilder().setName('pork').setDescription('Replies with ping and latency information'),
+  data: new SlashCommandBuilder().setName('ping').setDescription('Replies with ping and latency information'),
   async execute(interaction) {
     console.log(`hey.`);
     const sent = await interaction.reply({ content: 'Pinging...', fetchReply: true});
