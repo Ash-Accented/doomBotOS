@@ -9,7 +9,7 @@ const queue = new Map();
 
 
 
-function playSong(guild, track, audioDirectoryString, interaction) {
+async function playSong(guild, track, audioDirectoryString, interaction) {
   const filteredLastPart = path.basename(audioDirectoryString);
   interaction.channel.send({
     content: `<@${interaction.member.user.id}>`,
@@ -35,17 +35,23 @@ function playSong(guild, track, audioDirectoryString, interaction) {
       return;
   }
   
-  const resource = createAudioResource(path.join(audioDirectoryString, track));
-  serverQueue.player.play(resource);
+  const resource = createAudioResource(path.join(audioDirectoryString, track), {
+    ffmpeg: {
+      beforeOptions: '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
+    }
+  });
+  await serverQueue.player.play(resource);
   serverQueue.playing = true;
 
-  serverQueue.player.on(AudioPlayerStatus.Playing, () => {
-      console.log('The audio player has started playing!');       //Audio player confirmation
+  serverQueue.player.on(AudioPlayerStatus.Playing, async () => {
+     await console.log('The audio player has started playing!');       //Audio player confirmation
   });
 
-  serverQueue.player.on(AudioPlayerStatus.Idle, () => {
-    serverQueue.songs.shift();
-    playSong(guild, serverQueue.songs[0], audioDirectoryString, interaction);
+  serverQueue.player.on(AudioPlayerStatus.Idle, async () => {
+    await serverQueue.songs.shift();
+    if (serverQueue.songs.length > 0){
+      await playSong(guild, serverQueue.songs[0], audioDirectoryString, interaction);
+    }
   });
   
   serverQueue.player.on('error', error => {

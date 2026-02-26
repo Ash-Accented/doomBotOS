@@ -2,6 +2,13 @@ require('dotenv').config(); //Load our environmental variables from .env, using 
 const fs = require('fs');
 const path = require('path');
 const { REST, Routes } = require('discord.js'); //importing Rest and Routes, from discord.js (means REST and Routes comes from discord.js)
+if (typeof globalThis.setTimeout === 'function'){
+  const originalSetTimeout = globalThis.setTimeout;
+  globalThis.setTimeout = function (callback, delay, ...args){
+    const safeDelay = Math.max(0, delay);
+    return originalSetTimeout(callback, safeDelay, ...args);
+  };
+}
 const deployCommands = async () => {
   //Deploy Command Logic
   try {
