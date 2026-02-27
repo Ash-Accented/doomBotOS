@@ -30,22 +30,24 @@ async function playSong(guild, track, audioDirectoryString, interaction) {
 
   const serverQueue = queue.get(guild.id);        //Tracks the mapping of songs for the server as a queue
   if(!track){
-      serverQueue.voiceChannel.leave();
+      serverQueue.voiceChannel.destroy();
       queue.delete(guild.id);
       return;
   }
-  
-  const resource = createAudioResource(path.join(audioDirectoryString, track), {
-    ffmpeg: {
-      beforeOptions: '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
-    }
-  });
-  await serverQueue.player.play(resource);
-  serverQueue.playing = true;
+  try {
+    const resource = createAudioResource(path.join(audioDirectoryString, track));
+    await serverQueue.player.play(resource);
+    serverQueue.playing = true;
+  } catch (error) {
+    console.log(`ERROR WHEN PLAYING RESOURCE: ${error}`);
+  }
 
   serverQueue.player.on(AudioPlayerStatus.Playing, async () => {
-     await console.log('The audio player has started playing!');       //Audio player confirmation
+     console.log(`The audio player has started playing! ${track} `);       //Audio player confirmation
   });
+  
+  serverQueue.player.removeAllListeners(AudioPlayerStatus.Idle);
+  serverQueue.player.removeAllListeners('error');
 
   serverQueue.player.on(AudioPlayerStatus.Idle, async () => {
     await serverQueue.songs.shift();
