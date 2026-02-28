@@ -17,9 +17,8 @@
     - This wouldn't be necessary to run doom on a discord bot, however being able to operate your docker container from a discord channel without ANY external assistance would be amusing, despite the impracticality.
 
 
-
+## USAGE
 ```
-//CURRENT SLASH COMMANDS - (Arguments are enclosed in square brackets)
 /bash_command [string_args] //Executes a bash_command on a virtual machine in docker running alpine:v3.23 (where the bot currently runs), was thinking to modify this to execute the command from the host machine, and return the standard output of the virtual machine.
 /ping //Delivers the messaging ping of the bot
 
