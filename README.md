@@ -1,5 +1,5 @@
 # doomBotOS
-## An earnest attempt at programming a discord bot, capable of running an emulated version of doom live in a text-channel/VC channel.[^1]
+#### An earnest attempt at programming a discord bot, capable of running an emulated version of doom live in a text-channel/VC channel.[^1]
 [^1]: PS: Also does other things I required for utility, like simple music commands for personal reasons.
 
 
