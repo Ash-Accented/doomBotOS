@@ -1,6 +1,6 @@
 # doomBotOS
-## An earnest attempt at programming a discord bot, capable of running an emulated version of doom live in a text-channel/VC channel.
-### PS: Also does other things I required for utility, like simple music commands for personal reasons.
+## An earnest attempt at programming a discord bot, capable of running an emulated version of doom live in a text-channel/VC channel.[^1]
+[^1]: PS: Also does other things I required for utility, like simple music commands for personal reasons.
 
 
 
@@ -25,6 +25,7 @@
 /play_local_audio_file [local_file_path_string]
 ```
 
+###COMMANDS
 
 /bash_command *[string_args]* 
 > <sub>//Executes a bash_command on a virtual machine in docker running alpine:v3.23 (where the bot currently runs), was thinking to modify this to execute the command from the host machine, and return the standard output of the virtual machine.</sub>
