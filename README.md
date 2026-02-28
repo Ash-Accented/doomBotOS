@@ -2,7 +2,7 @@
 ## An earnest attempt at programming a discord bot, capable of running doom live in a text-channel.
 ### PS: Also does other things I required for utility, like simple music commands for personal reasons.
 
-````
+
 ```
 //CURRENT SLASH COMMANDS - (Arguments are enclosed in square brackets)
 /bash_command [string_args] //Executes a bash_command on a virtual machine in docker running alpine:v3.23 (where the bot currently runs), was thinking to modify this to execute the command from the host machine, and return the standard output of the virtual machine.
